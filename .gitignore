@@ -3,7 +3,6 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.sqlite3
 
 # Virtualenv
 myven/
@@ -17,5 +16,5 @@ clinicflow/*.sock
 # Logs
 *.log
 
-# Docker
+# Docker runtime
 *.pid
