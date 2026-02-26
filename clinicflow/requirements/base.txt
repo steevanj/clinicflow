@@ -1,0 +1,9 @@
+django>=4.2
+django-environ>=0.11.2
+djangorestframework
+djangorestframework-simplejwt
+mysqlclient
+django-filter
+django-cors-headers
+gunicorn
+reportlab>=4.0.0

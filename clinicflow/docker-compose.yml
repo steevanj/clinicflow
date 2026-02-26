@@ -1,0 +1,41 @@
+services:
+  web:
+    build: .
+    command: >
+      gunicorn clinicflow.wsgi:application
+      --bind 0.0.0.0:8000
+      --workers 3
+      --timeout 120
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=clinicflow.settings.development
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: rootpassword   # root password only
+      MYSQL_USER: ${DB_USER}              # app user (not root)
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "3307:3306"   # map container’s 3306 to host 3307
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mysql_data:

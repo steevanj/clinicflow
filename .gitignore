@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Virtualenv
+myven/
+venv/
+.env
+
+# Gunicorn control/socket files
+clinicflow/gunicorn.ctl
+clinicflow/*.sock
+
+# Logs
+*.log
+
+# Docker
+*.pid
