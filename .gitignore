@@ -4,7 +4,7 @@ __pycache__/
 *.pyo
 *.pyd
 
-# Virtualenv
+# Virtualenvs
 myven/
 venv/
 .env
