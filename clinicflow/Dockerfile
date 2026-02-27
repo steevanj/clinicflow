@@ -16,7 +16,8 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
-COPY requirements/base.txt /app/requirements.txt
+# Corrected path to match repo structure
+COPY clinicflow/requirements/base.txt /app/requirements.txt
 RUN pip install --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt
 
